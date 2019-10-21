@@ -1,10 +1,9 @@
 package ds
 
 import (
+	"errors"
 	"fmt"
 	"sync"
-
-	"github.com/go-openapi/errors"
 )
 
 type LinkedListFeatures interface {
@@ -73,7 +72,7 @@ func createNewNode(data interface{}) *Node {
 }
 func (ll *LinkedList) AppendNode(data interface{}) error {
 	if ll.Root == nil {
-		return errors.New(503, "Invalid LinkedList, root node is nil")
+		return errors.New("Invalid LinkedList, root node is nil")
 	}
 	newNode := createNewNode(data)
 	if ll.TailEnd == nil {
